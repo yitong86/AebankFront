@@ -1,4 +1,6 @@
 import React, { Fragment } from "react";
+import {NavLink} from 'react-router-dom';
+import NavButton from "./NavButton";
 
 const Navbar = (props) => {
     return (
@@ -17,7 +19,16 @@ const Navbar = (props) => {
         <h1 style={{fontFamily:"monospace",
     fontWeight:"bold",fontSize:"2.5em",
     margin:"0 20px"}}>Aebank</h1>
-        <h1>button</h1>
+<div style={{margin:"0 20px",
+            flexDirection:"row",
+            background:"transparent",
+            userSelect:"none",
+            alignItems:"center"
+}}>
+    <NavButton to ="/" label ="Home"/>
+
+    <NavButton to="/login" label = "Login"/>
+    </div>
         </div>
         <div style={{height:"75px"}}/>
         </Fragment>
