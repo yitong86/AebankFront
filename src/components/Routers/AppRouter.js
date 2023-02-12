@@ -5,13 +5,15 @@ import Container from '../common/Container';
 import Navbar from '../Navbar/Navbar';
 const AppRouter = () => {
     return(
+        <div style={{width:"100%", flexDirection:"column"}}>
     <Container>
-
+<Navbar/>
     <Routes>
       <Route path="/" element={<Home />} />
     </Routes>
    
   </Container>
+  </div>
     )
 }
  
