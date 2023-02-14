@@ -23,13 +23,25 @@ const Register = (props)=>{
             [field]: value
         })
     }
+
+    const onSubmit = () =>{
+
+    };
     return(
         <Container>
-            <Splash image={registerPhoto} style={{height:"20vh",color:"#F1F1F1",textShadow:"1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000,-1px 0 0 #000"}}>
+            <Splash image={registerPhoto} style={{
+                height:"20vh",
+                color:"#F1F1F1",
+                textShadow:"1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000,-1px 0 0 #000"
+                }}>
         <h1>Register</h1>
       
         </Splash>
-        <NewUserForm/>
+        <NewUserForm 
+        newUser={newUser} 
+        onChange={updateForm} 
+        onSubmit ={onSubmit}
+        />
         </Container>
     )
 }
