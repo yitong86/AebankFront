@@ -31,9 +31,8 @@ const Register = (props)=>{
         console.log(newUser);
         const data = newUser;
         data.name = `${data.fName} ${data.lName}`;
-      
-        data.username = data.email;
 
+        data.username = data.email;
         createuser(data);
         //create user,login,create customer
     };
@@ -42,12 +41,33 @@ const Register = (props)=>{
     const createuser = async (data) =>{
 try{
     const res = await axios.post(`${hostUrl}/api/customers/`,data)
-    console.log(res.data)
+    console.log(res.data);
+    login(data);
 
 }catch(err){
 console.log(err.response.data);
 }
     }
+    const login = async(data) => {
+        try{
+            const res = await axios.post(`${hostUrl}/api/customers/`,data);//?
+            console.log(res.data)
+            createCustomer(data,res.data.token);
+        }catch(err){
+            console.err(err.response.data);
+        }
+    }
+    const createCustomer = async(data,token) => {
+        try{
+            const res = await axios.post(`${hostUrl}/api/customers/`,data,{headers:{Authorization:`Bearar ${token}`}});
+            console.log(res.data)
+            createCustomer(data,res.data.token);
+        }catch(err){
+            console.err(err.response.data);
+        }
+    }
+}
+
     return(
         <Container>
             <Splash image={registerPhoto} style={{
