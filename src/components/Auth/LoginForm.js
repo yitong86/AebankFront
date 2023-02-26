@@ -1,44 +1,45 @@
-import React from 'react';
-import Container from '../common/Container';
-import Form from'../common/Form';
-import InlineInputContainer from '../common/InlineInputContainer';
-import Input from '../common/Input';
-import Button from '../common/Button';
+import React from "react";
+import Container from "../common/Container";
+import Form from "../common/Form";
+import Input from "../common/Input";
+import InlineInputContainer from "../common/InlineInputContainer";
+import Button from "../common/Button";
 
 const LoginForm = (props) => {
+    const {onSubmit, onChange, currentUser} = props;
 
-  const handleChange = (e) => {
-    props.updateForm(e.target.id, e.target.value)
-  }
-
-  return (
-    <Container>
-      <Form onSubmit={props.onSubmit} style={{marginTop: '5em'}}>
-        <InlineInputContainer>
-          <Input 
-            name="id"
-            id="id"
-            placeholder="User Id"
-            value={props.query.id}
-            onChange={handleChange}
-            required
-          />
-        </InlineInputContainer>
-        <InlineInputContainer>
-          <Input
-            name="password"
-            id="password"
-            placeholder="Password"
-            value={props.query.password}
-            onChange={handleChange}
-            required
-            type="password"
-          />
-        </InlineInputContainer>
-        <Button>Submit</Button>
-      </Form>
-    </Container>
-  )
+    const handleChange = (e) => {
+        onChange(e.target.id, e.target.value);
+    }
+    
+    return (
+        <Container>
+            <Form onSubmit={onSubmit} style={{marginTop: '1em'}}>
+                <InlineInputContainer>
+                    <Input
+                        name="email"
+                        id="email"
+                        value={currentUser.email}
+                        placeholder={"Email"}
+                        onChange={handleChange}
+                        required
+                    />
+            </InlineInputContainer>
+            <InlineInputContainer>
+                    <Input
+                        name="password"
+                        id="password"
+                        value={currentUser.password}
+                        placeholder={"Password"}
+                        onChange={handleChange}
+                        type="password"
+                        required
+                    />
+                </InlineInputContainer>
+                <Button>Submit</Button>
+            </Form>
+        </Container>
+    )
 }
 
-export default LoginForm
+export default LoginForm;

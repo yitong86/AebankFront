@@ -1,42 +1,79 @@
-import axios from 'axios';
-import React, {useState, useContext} from 'react';
-import {useNavigate} from 'react-router-dom'
-import Container from '../common/Container';
-import LoginForm from './LoginForm';
-import {AuthContext} from '../Providers/AuthProvider'
+import React, {useState, useContext} from "react";
+import axios from "axios";
+import LoginForm from "./LoginForm";
+import Container from "../common/Container"
+import Splash from "../common/Splash";
 
-const Login = () => {
-  const [query, setQuery] = useState({
-    id: "",
-    password: "",
-  })
-  const [auth, setAuth] = useContext(AuthContext)
-  const navigate = useNavigate();
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import { hostUrl } from "../../config";
 
-  const updateForm = (field, value) => {
-    setQuery({
-      ...query,
-      [field]: value
+
+
+const Login = (props) => {
+
+    const [currentUser, setCurrentUser] = useState({
+        email: "",
+        password: "",
+
     })
-  }
 
-  const onSubmit = async () => {
-    const data = query;
-    try {
-      const res = await axios.get(`http://localhost:8080/api/users/${query.id}`)
-      setAuth({id: res.data.id, name: res.data.name})
-      navigate('/');
-    } catch (error) {
-      console.error(error.response ? error.response.data : error.message)
+    const navigate = useNavigate();
+
+    const [auth, setAuth] = useContext(AuthContext);
+
+    const updateForm = (field, value) => {
+        setCurrentUser({
+            ...currentUser,
+            [field]: value
+        });
     }
-    
-  }
 
-  return (
-    <Container>
-      <LoginForm onSubmit={onSubmit} query={query} updateForm={updateForm}/>
-    </Container>
-  )
+    const onSubmit = () => {
+        const data = currentUser;
+        data.username = data.email;
+
+        _loginUser(data);
+    }
+
+    const _loginUser = async (data) => {
+
+        try {
+            const res = await axios.post(`${hostUrl}/api/auth/login`, data);
+
+            setAuth({
+                token: res.data.token,
+                profile: {},
+                roles: res.data.roles,
+
+            })
+
+        navigate("/account");
+        
+        } catch (err) {
+            console.error(err.message);
+        }
+    }
+
+    return (
+        <Container>
+            <Splash
+    
+            style={{
+                height: "20vh",
+                color: "#F1F1F1"
+            }}
+            >
+                <h1>Login</h1>
+            </Splash>
+            <LoginForm
+                currentUser={currentUser}
+                onChange={updateForm}
+                onSubmit={onSubmit}
+            />
+        </Container>
+    )
 }
+
 
 export default Login;

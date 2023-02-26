@@ -1,8 +1,9 @@
 import React ,{useState} from "react";
+import { useNavigate } from "react-router-dom";
 import Container from "../common/Container";
 import NewUserForm from "./NewUserForm";
 import Splash from "../common/Splash";
- import registerPhoto from "../../assets/registerPhoto.jpg";
+import registerPhoto from "../../assets/registerPhoto.jpg";
 import axios from "axios";
 import { hostUrl } from "../../config";
 
@@ -17,6 +18,8 @@ const Register = (props)=>{
         dataOfBirth:"",
 
     })
+
+    const navigate = useNavigate();
     //change new object new memory address
     //take the object ,recreate object by taking all original data and modifiy the what we want to modify
     const updateForm = (field, value) =>{
@@ -34,39 +37,40 @@ const Register = (props)=>{
 
         data.username = data.email;
         createuser(data);
-        //create user,login,create customer
+        //create user post,login the token,use token create customer
     };
 
 
     const createuser = async (data) =>{
 try{
-    const res = await axios.post(`${hostUrl}/api/customers/`,data)
+    const res = await axios.post(`${hostUrl}/api/auth/register`,data)
     console.log(res.data);
     login(data);
 
 }catch(err){
-console.log(err.response.data);
+    console.err(err.message);
 }
-    }
+   }
     const login = async(data) => {
         try{
-            const res = await axios.post(`${hostUrl}/api/customers/`,data);//?
+            const res = await axios.post(`${hostUrl}/api/auth/login`,data);
             console.log(res.data)
-            createCustomer(data,res.data.token);
+           // createCustomer(data,res.data.token);
+            navigate('/login')
         }catch(err){
-            console.err(err.response.data);
+          console.error(err.response.data);
         }
     }
-    const createCustomer = async(data,token) => {
-        try{
-            const res = await axios.post(`${hostUrl}/api/customers/`,data,{headers:{Authorization:`Bearar ${token}`}});
-            console.log(res.data)
-            createCustomer(data,res.data.token);
-        }catch(err){
-            console.err(err.response.data);
-        }
-    }
-}
+    // const createCustomer = async(data,token) => {
+    //     try{
+    //         const res = await axios.post(`${hostUrl}/customers`,data,{headers:{Authorization:`Bearar ${token}`}});
+    //         console.log(res.data)
+    //         navigate('/login')
+    //     }catch(err){
+    //       //  console.error(err.response.data);
+    //     }
+    // }
+
 
     return(
         <Container>
