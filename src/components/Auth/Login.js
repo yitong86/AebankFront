@@ -33,25 +33,27 @@ const Login = (props) => {
         const data = currentUser;
         data.username = data.email;
 
-        _loginUser(data);
+        loginUser(data);
     }
 
-    const _loginUser = async (data) => {
+    const loginUser = async (data) => {
 
         try {
             const res = await axios.post(`${hostUrl}/api/auth/login`, data);
-
+            console.log(res.data)
             setAuth({
                 token: res.data.token,
-                profile: {},
-                roles: res.data.roles,
+                email: res.data.username,
+     
+                // profile: {},
+                // roles: res.data.roles,
 
             })
 
-        navigate("/account");
+        navigate("/");
         
         } catch (err) {
-            console.error(err.message);
+          //  console.error(err.message);
         }
     }
 

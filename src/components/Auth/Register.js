@@ -48,28 +48,28 @@ try{
     login(data);
 
 }catch(err){
-    console.err(err.message);
+   // console.err(err.message);
 }
    }
     const login = async(data) => {
         try{
             const res = await axios.post(`${hostUrl}/api/auth/login`,data);
             console.log(res.data)
-           // createCustomer(data,res.data.token);
+            createCustomer(data,res.data.token);
             navigate('/login')
         }catch(err){
           console.error(err.response.data);
         }
     }
-    // const createCustomer = async(data,token) => {
-    //     try{
-    //         const res = await axios.post(`${hostUrl}/customers`,data,{headers:{Authorization:`Bearar ${token}`}});
-    //         console.log(res.data)
-    //         navigate('/login')
-    //     }catch(err){
-    //       //  console.error(err.response.data);
-    //     }
-    // }
+    const createCustomer = async(data,token) => {
+        try{
+            const res = await axios.post(`${hostUrl}/customers`,data,{headers:{Authorization:`Bearar ${token}`}});
+            console.log(res.data)
+            navigate('/login')
+        }catch(err){
+          //  console.error(err.response.data);
+        }
+    }
 
 
     return(
