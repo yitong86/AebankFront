@@ -7,6 +7,7 @@ const NavButton = (props) => {
   return (
     <NavLink to={props.to} 
       style={{
+      
         background: '',
         textDecoration: 'none',
         fontSize: '1.75em',
@@ -19,6 +20,7 @@ const NavButton = (props) => {
         margin: '0 10px',
         opacity: hover ? "60%" : "100%",
         cssTransition:"opacity 0.15s,color 0.15s"
+        
       }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}

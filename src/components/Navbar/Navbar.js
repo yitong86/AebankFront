@@ -29,6 +29,7 @@ const Navbar = (props) => {
 
     <NavButton to="/login" label = "Login"/>
     <NavButton to="/signup" label = "Sign Up"/>
+    <NavButton to="/contact" label='Contact us' />
     </div>
         </div>
         <div style={{height:"75px"}}/>

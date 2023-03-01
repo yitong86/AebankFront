@@ -63,7 +63,12 @@ try{
     }
     const createCustomer = async(data,token) => {
         try{
-            const res = await axios.post(`${hostUrl}/customers`,data,{headers:{Authorization:`Bearar ${token}`}});
+            const res = await axios.post(`${hostUrl}/api/auth/newCustomer`, 
+            data,
+             {
+                headers:
+                {Authorization: `Bearer ${token}`
+            }});
             console.log(res.data)
             navigate('/login')
         }catch(err){

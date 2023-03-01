@@ -50,7 +50,7 @@ const Login = (props) => {
 
             })
 
-        navigate("/");
+        navigate("/dashboard");
         
         } catch (err) {
           //  console.error(err.message);
@@ -66,7 +66,7 @@ const Login = (props) => {
                 color: "#F1F1F1"
             }}
             >
-                <h1>Login</h1>
+                <h1 style={{color:"black"}}>Login</h1>
             </Splash>
             <LoginForm
                 currentUser={currentUser}
