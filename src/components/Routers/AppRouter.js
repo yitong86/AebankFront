@@ -10,7 +10,7 @@ import{Deposit} from '../../deposit/deposit';
 import{Withdraw} from '../../withdraw/withdraw';
 import{Transfer} from '../../transfer/transfer';
 import CheckingAccount from '../../balance/CheckingAccount';
-
+import SavingAccount from '../../balance/SavingAccount';
 
 import ContactUs from '../contactUs/ContactUs';
 
@@ -31,7 +31,7 @@ const AppRouter = () => {
       <Route path ="/withdraw" element={<Withdraw/>}/>
       <Route path ="/transfer" element={<Transfer/>}/>
       <Route path ="/checkingAccount" element={<CheckingAccount/>}/>
-
+      <Route path ="/savingAccount" element={<SavingAccount/>}/>
     </Routes>
    
   </Container>

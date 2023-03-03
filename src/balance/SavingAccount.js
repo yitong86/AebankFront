@@ -3,11 +3,11 @@ import { AuthContext } from '../components/Providers/AuthProvider';
 import { hostUrl } from '../config';
 import axios from 'axios';
 
-const CheckingAccount = (props) =>{
+const SavingAccount = (props) =>{
   
     const [auth] = useContext(AuthContext);
 
-    const[checking,setChecking] = useState([]);
+    const[saving,setSavinging] = useState([]);
 
 
 
@@ -16,14 +16,14 @@ const CheckingAccount = (props) =>{
         const _getChecking = async () => {
             try {
                 const res = await axios.get(
-                    `${hostUrl}/api/checkingAccounts/accounts`, 
+                    `${hostUrl}/api/savingAccounts/`, 
                     {
                     headers: {
                         Authorization: `Bearer ${auth.token}`
                     }
                 });
                 console.log(res.data);
-                setChecking(res.data);
+                setSavinging(res.data);
               
             } catch (err) {
               //console.log(err)
@@ -38,7 +38,7 @@ const CheckingAccount = (props) =>{
   return (
     <div>
       <h3>CheckingAccount</h3>
-      {checking.map((item)=>(
+      {saving.map((item)=>(
       <p key = {item.balance}>{item.balance}</p>
    
       ))}
@@ -46,4 +46,4 @@ const CheckingAccount = (props) =>{
   )
 }
   
-export default CheckingAccount;
+export default SavingAccount;

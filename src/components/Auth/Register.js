@@ -6,7 +6,7 @@ import Splash from "../common/Splash";
 import registerPhoto from "../../assets/registerPhoto.jpg";
 import axios from "axios";
 import { hostUrl } from "../../config";
-import {AuthContext} from '../../Providers/AuthProvider';
+import {AuthContext} from '../Providers/AuthProvider';
 const Register = (props)=>{
 
     const [newUser,setNewUser] = useState({
@@ -75,6 +75,7 @@ try{
             setAuth({token})
             alert(res.data.id);
             navigate('/login')
+
         }catch(err){
           //  console.error(err.response.data);
         }
@@ -96,6 +97,7 @@ try{
         onChange={updateForm} 
         onSubmit ={onSubmit}
         />
+        <h>hi</h>
         </Container>
     )
 }

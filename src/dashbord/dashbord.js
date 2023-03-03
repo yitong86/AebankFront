@@ -29,7 +29,9 @@ export function Dashboard() {
             <button class ="item5" onClick={() => navigate('/checkingAccount')}>
                 Checking Account
             </button>
-           
+            <button class ="item6" onClick={() => navigate('/savingAccount')}>
+                Saving Account
+            </button>
         </Container>
     )
 }
