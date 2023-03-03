@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 export function Dashboard() {
 
     const navigate = useNavigate()
-
+  
     return (
        
         <Container className="item" style={{paddingTop:"90px",height:"80px"}}>
@@ -26,9 +26,10 @@ export function Dashboard() {
             <button class ="item4" onClick={() => navigate('/transfer')}>
                 Transfer
             </button>
-            <button class ="item5" onClick={() => navigate('/balance')}>
-                Balance
+            <button class ="item5" onClick={() => navigate('/checkingAccount')}>
+                Checking Account
             </button>
+           
         </Container>
     )
 }

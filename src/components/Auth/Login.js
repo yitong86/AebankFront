@@ -5,7 +5,7 @@ import Container from "../common/Container"
 import Splash from "../common/Splash";
 
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../Providers/AuthProvider";
+import { AuthContext } from "../../Providers/AuthProvider";
 import { hostUrl } from "../../config";
 
 
@@ -40,16 +40,16 @@ const Login = (props) => {
 
         try {
             const res = await axios.post(`${hostUrl}/api/auth/login`, data);
-            console.log(res.data)
+            console.log(res.data);
             setAuth({
                 token: res.data.token,
-                email: res.data.username,
+               username: res.data.email,
      
                 // profile: {},
                 // roles: res.data.roles,
 
             })
-
+           
         navigate("/dashboard");
         
         } catch (err) {

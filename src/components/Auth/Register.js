@@ -1,4 +1,4 @@
-import React ,{useState} from "react";
+import React ,{useState,useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "../common/Container";
 import NewUserForm from "./NewUserForm";
@@ -6,8 +6,9 @@ import Splash from "../common/Splash";
 import registerPhoto from "../../assets/registerPhoto.jpg";
 import axios from "axios";
 import { hostUrl } from "../../config";
-
+import {AuthContext} from '../../Providers/AuthProvider';
 const Register = (props)=>{
+
     const [newUser,setNewUser] = useState({
         email:"",
         password:"",
@@ -19,6 +20,7 @@ const Register = (props)=>{
 
     })
 
+    const [auth,setAuth] = useContext(AuthContext)
     const navigate = useNavigate();
     //change new object new memory address
     //take the object ,recreate object by taking all original data and modifiy the what we want to modify
@@ -70,6 +72,8 @@ try{
                 {Authorization: `Bearer ${token}`
             }});
             console.log(res.data)
+            setAuth({token})
+            alert(res.data.id);
             navigate('/login')
         }catch(err){
           //  console.error(err.response.data);

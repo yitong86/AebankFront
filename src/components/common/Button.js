@@ -39,7 +39,7 @@ const styles = {
 
 Button.propTypes = {
   type: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.string,
   disabled: PropTypes.bool
 }
 
