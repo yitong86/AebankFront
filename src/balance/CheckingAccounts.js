@@ -3,47 +3,47 @@ import { AuthContext } from '../components/Providers/AuthProvider';
 import { hostUrl } from '../config';
 import axios from 'axios';
 
-const SavingAccount = (props) =>{
+const CheckingAccounts = (props) =>{
   
     const [auth] = useContext(AuthContext);
 
-    const[saving,setSavinging] = useState([]);
+    const[checking,setChecking] = useState([]);
 
 
 
 
     useEffect(() => {
-        const _getSaving = async () => {
+        const _getChecking = async () => {
             try {
                 const res = await axios.get(
-                    `${hostUrl}/api/savingAccounts/`, 
+                    `${hostUrl}/api/checkingAccounts/accounts`, 
                     {
                     headers: {
                         Authorization: `Bearer ${auth.token}`
                     }
                 });
                 console.log(res.data);
-                setSavinging(res.data);
+                setChecking(res.data);
               
             } catch (err) {
               //console.log(err)
             }
         }
        
-        _getSaving();
+        _getChecking();
     }, [])
 
    
 
   return (
     <div>
-      <h3>SavingAccount</h3>
-      {saving.map((item)=>(
-      <p key = {item.balance}>{item.balance}</p>
+      <h3>CheckingAccount</h3>
+      {checking.map((checking)=>(
+      <p key = {checking.balance}>{checking.balance}</p>
    
       ))}
     </div>
   )
 }
   
-export default SavingAccount;
+export default CheckingAccounts;

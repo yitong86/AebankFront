@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom'
+import BorderCard from '../components/common/BorderCard';
 
 export function Dashboard() {
 
@@ -8,30 +8,30 @@ export function Dashboard() {
   
     return (
        
-        <Container className="item" style={{paddingTop:"90px",height:"80px"}}>
+        <div className="item" style={{paddingTop:"90px",height:"80px"}}>
             
-             <h1 style={{marginRight:"80px"}}>Dashboard</h1>
+             
              
            
-            <button class ="item1" onClick={() => navigate('/signup')} >
+            <BorderCard className ="item1" onClick={() => navigate('/signup')} >
                 New Customer
-            </button>
+            </BorderCard>
             
-            <button class ="item2" onClick={() => navigate('/deposit')}>
+            <BorderCard className ="item2" onClick={() => navigate('/deposit')}>
                 Deposit
-            </button>
-            <button class ="item3" onClick={() => navigate('/withdraw')} >
+            </BorderCard>
+            <BorderCard className ="item3" onClick={() => navigate('/withdraw')} >
                 Withdraw
-            </button>
-            <button class ="item4" onClick={() => navigate('/transfer')}>
+            </BorderCard>
+            <BorderCard className ="item4" onClick={() => navigate('/transfer')}>
                 Transfer
-            </button>
-            <button class ="item5" onClick={() => navigate('/checkingAccount')}>
+            </BorderCard>
+            <BorderCard className ="item5" onClick={() => navigate('/checkingAccount')}>
                 Checking Account
-            </button>
-            <button class ="item6" onClick={() => navigate('/savingAccount')}>
+            </BorderCard>
+            <BorderCard className ="item6" onClick={() => navigate('/savingAccount')}>
                 Saving Account
-            </button>
-        </Container>
+            </BorderCard>
+        </div>
     )
 }

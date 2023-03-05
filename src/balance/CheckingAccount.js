@@ -1,49 +1,16 @@
-import React, {useContext, useEffect, useState} from 'react';
-import { AuthContext } from '../components/Providers/AuthProvider';
-import { hostUrl } from '../config';
-import axios from 'axios';
+// import React from 'react';
+// import BorderCard from "../components/common/BorderCard"
 
-const CheckingAccount = (props) =>{
-  
-    const [auth] = useContext(AuthContext);
+// const CheckingAccount = (props) => {
 
-    const[checking,setChecking] = useState([]);
+//   const {balance, id} = props.checkingAccount
 
+//   return (
+//     <BorderCard onClick={() => props.onSelect(id)}>
+//       {/* <h2>{accountNumber}</h2> */}
+//       <p>{balance}</p>
+//     </BorderCard>
+//   )
+// }
 
-
-
-    useEffect(() => {
-        const _getChecking = async () => {
-            try {
-                const res = await axios.get(
-                    `${hostUrl}/api/checkingAccounts/accounts`, 
-                    {
-                    headers: {
-                        Authorization: `Bearer ${auth.token}`
-                    }
-                });
-                console.log(res.data);
-                setChecking(res.data);
-              
-            } catch (err) {
-              //console.log(err)
-            }
-        }
-       
-        _getChecking();
-    }, [])
-
-   
-
-  return (
-    <div>
-      <h3>CheckingAccount</h3>
-      {checking.map((item)=>(
-      <p key = {item.balance}>{item.balance}</p>
-   
-      ))}
-    </div>
-  )
-}
-  
-export default CheckingAccount;
+// export default CheckingAccount;

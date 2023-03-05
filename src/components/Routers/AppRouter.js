@@ -9,7 +9,7 @@ import { Dashboard } from '../../dashbord/dashbord';
 import{Deposit} from '../../deposit/deposit';
 import{Withdraw} from '../../withdraw/withdraw';
 import{Transfer} from '../../transfer/transfer';
-import CheckingAccount from '../../balance/CheckingAccount';
+import CheckingAccounts from '../../balance/CheckingAccounts';
 import SavingAccount from '../../balance/SavingAccount';
 
 import ContactUs from '../contactUs/ContactUs';
@@ -30,7 +30,7 @@ const AppRouter = () => {
       <Route path ="/deposit" element={<Deposit/>}/>
       <Route path ="/withdraw" element={<Withdraw/>}/>
       <Route path ="/transfer" element={<Transfer/>}/>
-      <Route path ="/checkingAccount" element={<CheckingAccount/>}/>
+      <Route path ="/checkingAccount" element={<CheckingAccounts/>}/>
       <Route path ="/savingAccount" element={<SavingAccount/>}/>
     </Routes>
    
