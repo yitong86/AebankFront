@@ -1,8 +1,10 @@
-import React, { Fragment } from "react";
+import React, {Fragment ,useContext} from "react";
 import {NavLink} from 'react-router-dom';
 import NavButton from "./NavButton";
-
+import { AuthContext } from "../Providers/AuthProvider";
 const Navbar = (props) => {
+    const [auth] = useContext(AuthContext);
+
     return (
         <Fragment>
             <div style={{
@@ -27,8 +29,15 @@ const Navbar = (props) => {
 }}>
     <NavButton to ="/" label ="Home"/>
 
-    <NavButton to="/login" label = "Login"/>
-    <NavButton to="/signup" label = "Sign Up"/>
+    {auth.token ? (
+    <NavButton to ="/dashboard" label = "Dashboard" />
+    ) : (
+        <Fragment>
+        <NavButton to="/login" label = "Login"/>
+        <NavButton to="/signup" label = "Sign Up"/>
+    </Fragment>
+    )}
+    
     <NavButton to="/contact" label='Contact us' />
     </div>
         </div>

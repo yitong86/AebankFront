@@ -9,7 +9,7 @@ export function Transfer() {
 
         console.log(`Source ${srcId} Destination ${destId} Amount ${amount}`)
 
-        fetch('http://localhost:3004/transfer', {
+        fetch('http://localhost:8080/api/transfer', {
             method : 'PUT',
             headers : {
                 'Accept' : 'application/json',
