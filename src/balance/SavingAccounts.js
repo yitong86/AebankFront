@@ -3,26 +3,23 @@ import { AuthContext } from '../components/Providers/AuthProvider';
 import { hostUrl } from '../config';
 import axios from 'axios';
 import Spinner from '../faCommon/Spinner';
+import SavingAccount from './SavingAccount';
 
-import CheckingAccount from './CheckingAccount';
 
-const CheckingAccounts = (props) =>{
+const SavingAccounts = (props) =>{
   
     const [auth] = useContext(AuthContext);
 
-    const[checking,setChecking] = useState([]);
+    const[saving,setSavinging] = useState([]);
 
     const[loading,setLoading] = useState(true);
 
-//use effect to pull list of checking
-//use state to store the checking
-//neet beare tokem to get the checking list
 
     useEffect(() => {
-        const _getChecking = async () => {
+        const _getSaving = async () => {
             try {
                 const res = await axios.get(
-                    `${hostUrl}/api/checkingAccounts/accounts`, 
+                    `${hostUrl}/api/savingAccounts/accounts`, 
                     {
                     headers: {
                         Authorization: `Bearer ${auth.token}`
@@ -30,20 +27,20 @@ const CheckingAccounts = (props) =>{
                 });
                 console.log(res.data);
                 setLoading(false);
-                setChecking(res.data);
+                setSavinging(res.data);
               
             } catch (err) {
               //console.log(err)
             }
         }
-       setLoading(true);
-        _getChecking();
-    }, [])
+        setLoading(true);
+        _getSaving();
+    }, [auth.token])
 
-    const displayCheckings = () => {
-      return checking.map(dev => <CheckingAccount CheckingAccount={dev} />)
-    }
-
+   
+    const displaySavings = () => {
+        return saving.map(dev => <SavingAccount SavingAccount={dev} />)
+      }
   return (
     <div style={{
       display: "flex",
@@ -52,23 +49,20 @@ const CheckingAccounts = (props) =>{
       alignItems: 'center',
       minHeight: '100vh',
     }}>
-      <h1>CheckingAccount</h1>
-      
+      <h1>SavingAccount</h1>
+
       <h2>AccountNumber: </h2>
       {loading ? <Spinner />
       :
 
-      displayCheckings()
-      // <h3>
-      // {checking.map((checking)=>(
-      // <p key = {checking.balance}>{checking.accountNumber}</p>
+      displaySavings()
+  }
+      {/* {saving.map((item)=>(
+      <p key = {item.balance}>{item.balance}</p>
    
-      // ))}
-      // </h3>
-    }
-    
+      ))} */}
     </div>
   )
 }
   
-export default CheckingAccounts;
+export default SavingAccounts;

@@ -1,49 +1,18 @@
-import React, {useContext, useEffect, useState} from 'react';
-import { AuthContext } from '../components/Providers/AuthProvider';
-import { hostUrl } from '../config';
-import axios from 'axios';
+import React from 'react';
+import BorderCard from "../components/common/BorderCard"
 
-const SavingAccount = (props) =>{
+const SavingAccount = (props) => {
+
+  const {accountNumber} = props.SavingAccount
   
-    const [auth] = useContext(AuthContext);
-
-    const[saving,setSavinging] = useState([]);
-
-
-
-
-    useEffect(() => {
-        const _getSaving = async () => {
-            try {
-                const res = await axios.get(
-                    `${hostUrl}/api/savingAccounts/`, 
-                    {
-                    headers: {
-                        Authorization: `Bearer ${auth.token}`
-                    }
-                });
-                console.log(res.data);
-                setSavinging(res.data);
-              
-            } catch (err) {
-              //console.log(err)
-            }
-        }
-       
-        _getSaving();
-    }, [])
-
-   
-
   return (
-    <div>
-      <h3>SavingAccount</h3>
-      {saving.map((item)=>(
-      <p key = {item.balance}>{item.balance}</p>
-   
-      ))}
-    </div>
+    <BorderCard>
+     
+      <p>{accountNumber}</p>
+    </BorderCard>
   )
 }
-  
+
 export default SavingAccount;
+
+

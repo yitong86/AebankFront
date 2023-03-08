@@ -7,7 +7,14 @@ import registerPhoto from "../../assets/registerPhoto.jpg";
 import axios from "axios";
 import { hostUrl } from "../../config";
 import {AuthContext} from '../Providers/AuthProvider';
+//import { redirect } from "react-router-dom";
+
+
+
+
+
 const Register = (props)=>{
+    let navigae = useNavigate();
 
     const [newUser,setNewUser] = useState({
         email:"",
@@ -74,7 +81,7 @@ try{
             console.log(res.data)
             setAuth({token})
             alert(res.data.id);
-            navigate('/login')
+            navigate('/dashboard')
 
         }catch(err){
           //  console.error(err.response.data);
@@ -90,7 +97,7 @@ try{
                 textShadow:"1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000,-1px 0 0 #000"
                 }}>
         <h1>Register</h1>
-      
+    
         </Splash>
         <NewUserForm 
         newUser={newUser} 
