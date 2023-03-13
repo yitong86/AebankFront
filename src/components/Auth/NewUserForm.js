@@ -88,7 +88,7 @@ const NewUserForm = ({onSubmit,onChange,newUser}) => {
             type = "text"
             />
         </InlineInputContainer>
-        <Button>Submit</Button>
+        <Button >Submit</Button>
     </Form>
        </Container>
 

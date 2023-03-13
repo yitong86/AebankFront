@@ -6,15 +6,14 @@ import Navbar from '../Navbar/Navbar';
 import Register from '../Auth/Register';
 import Login from '../Auth/Login';
 import { Dashboard } from '../../dashbord/dashbord';
-import{Deposit} from '../../deposit/deposit';
-import{Withdraw} from '../../withdraw/withdraw';
 import Appointment from '../../appointment/appointment';
 import CheckingAccounts from '../../balance/CheckingAccounts';
 import SavingAccounts from '../../balance/SavingAccounts';
-
+import Loans from '../../balance/Loans';
 import ContactUs from '../contactUs/ContactUs';
 import CheckingDetail from '../../balance/CheckingDetail';
 import SavingDetail from '../../balance/SavingDetail';
+import LoanDetail from '../../balance/LoanDetail';
 
 
 const AppRouter = () => {
@@ -29,13 +28,13 @@ const AppRouter = () => {
       <Route path ="/login" element={<Login/>}/>
       <Route path ="/contact" element={<ContactUs/>}/>
       <Route path ="/dashboard" element={<Dashboard />}/>
-      <Route path ="/deposit" element={<Deposit/>}/>
-      <Route path ="/withdraw" element={<Withdraw/>}/>
+      <Route path ="/loan" element={<Loans/>}/>
       <Route path ="/appointment" element={<Appointment/>}/>
       <Route path ="/checkingAccount" element={<CheckingAccounts/>}/>
       <Route path ="/savingAccount" element={<SavingAccounts/>}/>
       <Route path="/checkingAccount/:devId" element={<CheckingDetail />} />
       <Route path="/savingAccount/:devId" element={<SavingDetail />} />
+      <Route path="/loan/:devId" element={<LoanDetail />} />
     </Routes>
    
   </Container>

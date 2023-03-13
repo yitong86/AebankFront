@@ -36,7 +36,7 @@ const LoginForm = (props) => {
                         required
                     />
                 </InlineInputContainer>
-                <Button style={{color:"white",backgroundColor:"black"}}>Login</Button>
+                <Button onclick={window['alertHello']} style={{color:"white",backgroundColor:"black"}} >Login</Button>
             </Form>
         </Container>
     )

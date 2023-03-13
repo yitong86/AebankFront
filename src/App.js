@@ -10,6 +10,7 @@ library.add(fas);
 
 function App() {
   return (
+   
    <BrowserRouter>
    <AuthProvider>
       <AppRouter/>

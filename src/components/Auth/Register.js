@@ -65,7 +65,7 @@ try{
             const res = await axios.post(`${hostUrl}/api/auth/login`,data);
             console.log(res.data)
             createCustomer(data,res.data.token);
-            navigate('/login')
+           // navigate('/login')
         }catch(err){
           console.error(err.response.data);
         }
