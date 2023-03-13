@@ -4,7 +4,7 @@ import { hostUrl } from '../config';
 import axios from 'axios';
 import Spinner from '../faCommon/Spinner';
 import SavingAccount from './SavingAccount';
-
+import {useNavigate} from 'react-router-dom';
 
 const SavingAccounts = (props) =>{
   
@@ -14,6 +14,7 @@ const SavingAccounts = (props) =>{
 
     const[loading,setLoading] = useState(true);
 
+    const navigate = useNavigate();
 
     useEffect(() => {
         const _getSaving = async () => {
@@ -39,8 +40,12 @@ const SavingAccounts = (props) =>{
 
    
     const displaySavings = () => {
-        return saving.map(dev => <SavingAccount SavingAccount={dev} />)
+        return saving.map(dev => <SavingAccount SavingAccount={dev} key ={dev.id} onSelect = {onSelect} />)
       }
+      const onSelect = (devId) => {
+        navigate(`/savingAccount/${devId}`)
+      }
+
   return (
     <div style={{
       display: "flex",

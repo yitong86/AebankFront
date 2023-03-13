@@ -3,10 +3,10 @@ import BorderCard from "../components/common/BorderCard"
 
 const SavingAccount = (props) => {
 
-  const {accountNumber} = props.SavingAccount
+  const {accountNumber,id} = props.SavingAccount
   
   return (
-    <BorderCard>
+    <BorderCard onClick={() => props.onSelect(id)}>
      
       <p>{accountNumber}</p>
     </BorderCard>

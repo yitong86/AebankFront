@@ -3,7 +3,7 @@ import { AuthContext } from '../components/Providers/AuthProvider';
 import { hostUrl } from '../config';
 import axios from 'axios';
 import Spinner from '../faCommon/Spinner';
-
+import {useNavigate} from 'react-router-dom';
 import CheckingAccount from './CheckingAccount';
 
 const CheckingAccounts = (props) =>{
@@ -14,6 +14,7 @@ const CheckingAccounts = (props) =>{
 
     const[loading,setLoading] = useState(true);
 
+    const navigate = useNavigate();
 //use effect to pull list of checking
 //use state to store the checking
 //neet beare tokem to get the checking list
@@ -41,9 +42,11 @@ const CheckingAccounts = (props) =>{
     }, [])
 
     const displayCheckings = () => {
-      return checking.map(dev => <CheckingAccount CheckingAccount={dev} />)
+      return checking.map(dev => <CheckingAccount CheckingAccount={dev} key ={dev.id} onSelect = {onSelect}/>)
     }
-
+    const onSelect = (devId) => {
+      navigate(`/checkingAccount/${devId}`)
+    }
   return (
     <div style={{
       display: "flex",

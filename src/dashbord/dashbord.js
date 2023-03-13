@@ -13,8 +13,11 @@ export function Dashboard() {
              
              
            
-            <BorderCard className ="item1" onClick={() => navigate('/signup')} >
-                New Customer
+            <BorderCard className ="item5" onClick={() => navigate('/checkingAccount')}>
+                Checking Account
+            </BorderCard>
+            <BorderCard className ="item6" onClick={() => navigate('/savingAccount')}>
+                Saving Account
             </BorderCard>
             
             <BorderCard className ="item2" onClick={() => navigate('/deposit')}>
@@ -23,15 +26,10 @@ export function Dashboard() {
             <BorderCard className ="item3" onClick={() => navigate('/withdraw')} >
                 Withdraw
             </BorderCard>
-            <BorderCard className ="item4" onClick={() => navigate('/transfer')}>
-                Transfer
+            <BorderCard className ="item4" onClick={() => navigate('/appointment')}>
+                Appointment
             </BorderCard>
-            <BorderCard className ="item5" onClick={() => navigate('/checkingAccount')}>
-                Checking Account
-            </BorderCard>
-            <BorderCard className ="item6" onClick={() => navigate('/savingAccount')}>
-                Saving Account
-            </BorderCard>
+          
         </div>
     )
 }
