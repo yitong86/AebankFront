@@ -15,7 +15,8 @@ import CheckingDetail from '../../balance/CheckingDetail';
 import SavingDetail from '../../balance/SavingDetail';
 import LoanDetail from '../../balance/LoanDetail';
 import Stocks from '../stock/Stocks';
-
+import Video from '../../appointment/Video';
+import RoomPage from '../../appointment/RoomPage';
 
 const AppRouter = () => {
   
@@ -31,6 +32,8 @@ const AppRouter = () => {
       <Route path ="/stock" element={<Stocks/>}/>
       <Route path ="/dashboard" element={<Dashboard />}/>
       <Route path ="/loan" element={<Loans/>}/>
+      <Route path ="/video" element = {<Video />}/>
+      <Route path ="/room/:roomId" element={<RoomPage />}/>
     
 
       <Route path ="/appointment" element={<Appointment/>}/>
