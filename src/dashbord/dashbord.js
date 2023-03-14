@@ -23,10 +23,10 @@ export function Dashboard() {
             <BorderCard className ="item3" onClick={() => navigate('/loan')}>
                 Loan
             </BorderCard>
-            {/* <BorderCard className ="item3" onClick={() => navigate('/withdraw')} >
-                Withdraw
-            </BorderCard> */}
-            <BorderCard className ="item4" onClick={() => navigate('/appointment')}>
+            <BorderCard className ="item4" onClick={() => navigate('/stock')} >
+                Stock
+            </BorderCard>
+            <BorderCard className ="item5" onClick={() => navigate('/appointment')}>
                 Appointment
             </BorderCard>
           

@@ -1,4 +1,4 @@
-import React ,{useState,useContext} from "react";
+import React ,{useState,useContext,userRef,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "../common/Container";
 import NewUserForm from "./NewUserForm";
@@ -8,8 +8,6 @@ import axios from "axios";
 import { hostUrl } from "../../config";
 import {AuthContext} from '../Providers/AuthProvider';
 //import { redirect } from "react-router-dom";
-
-
 
 
 
@@ -26,9 +24,13 @@ const Register = (props)=>{
         dataOfBirth:"",
 
     })
+    
 
     const [auth,setAuth] = useContext(AuthContext)
     const navigate = useNavigate();
+
+   
+
     //change new object new memory address
     //take the object ,recreate object by taking all original data and modifiy the what we want to modify
     const updateForm = (field, value) =>{
@@ -51,6 +53,7 @@ const Register = (props)=>{
 
 
     const createuser = async (data) =>{
+    
 try{
     const res = await axios.post(`${hostUrl}/api/auth/register`,data)
     console.log(res.data);
@@ -62,7 +65,7 @@ try{
    }
     const login = async(data) => {
         try{
-            const res = await axios.post(`${hostUrl}/api/auth/login`,data);
+            const res = await axios.post(`/api/auth/login`,data);
             console.log(res.data)
             createCustomer(data,res.data.token);
            // navigate('/login')
@@ -104,7 +107,7 @@ try{
         onChange={updateForm} 
         onSubmit ={onSubmit}
         />
-        <h>hi</h>
+    
         </Container>
     )
 }

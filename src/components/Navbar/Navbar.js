@@ -31,7 +31,7 @@ const Navbar = (props) => {
 
     {auth.token ? (
     <NavButton to ="/dashboard" label = "Dashboard" />
-    
+
     ) : (
         <Fragment>
         <NavButton to="/login" label = "Login"/>

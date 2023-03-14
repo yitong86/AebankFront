@@ -14,6 +14,7 @@ import ContactUs from '../contactUs/ContactUs';
 import CheckingDetail from '../../balance/CheckingDetail';
 import SavingDetail from '../../balance/SavingDetail';
 import LoanDetail from '../../balance/LoanDetail';
+import Stocks from '../stock/Stocks';
 
 
 const AppRouter = () => {
@@ -27,8 +28,11 @@ const AppRouter = () => {
       <Route path ="/signup" element={<Register/>}/>
       <Route path ="/login" element={<Login/>}/>
       <Route path ="/contact" element={<ContactUs/>}/>
+      <Route path ="/stock" element={<Stocks/>}/>
       <Route path ="/dashboard" element={<Dashboard />}/>
       <Route path ="/loan" element={<Loans/>}/>
+    
+
       <Route path ="/appointment" element={<Appointment/>}/>
       <Route path ="/checkingAccount" element={<CheckingAccounts/>}/>
       <Route path ="/savingAccount" element={<SavingAccounts/>}/>

@@ -1,4 +1,3 @@
-
 import React,{useState} from "react";
 import Button from "../components/common//Button";
 
@@ -6,10 +5,6 @@ function Appointment(){
     const[date,setDate] = useState();
 
     console.log("Date",date);
-
-
-
-    
     return (
         <>
         <h1>Selected Date : {date}</h1>
@@ -18,11 +13,7 @@ function Appointment(){
         <Button  onClick={() => alert('Thank you for your booking!')}>
             Submit
         </Button>
-        <div class="ui-widget">
-  <label for="tags">Email: </label>
-  <input id="tags"/>
-</div>
- 
+        
         </>
     )
 }
