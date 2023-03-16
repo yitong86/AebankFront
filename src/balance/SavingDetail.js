@@ -2,7 +2,7 @@ import React, {useEffect,useState,useContext} from "react";
 import axios from "axios";
 import {useParams} from 'react-router-dom'
 import { AuthContext } from '../components/Providers/AuthProvider';
-
+//fetch data from backend
 const SavingDetail=(props)=>{
     const params = useParams();
 const[detail,setDetail] = useState({
@@ -38,6 +38,7 @@ useEffect(() => {
         <h2>Balance: {detail.balance}</h2>
         <h2>PostDate: {detail.postDate}</h2>
         <h2>Status: {detail.status}</h2>
+        <h2>Status: {detail.interestrate}</h2>
         </>
     )
 }
